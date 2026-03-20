@@ -1,0 +1,219 @@
+:root { 
+    --aura-blue: #00d4ff; 
+    --ultra-purple: #bc00ff; 
+    --bg: #010103; 
+    --glass: rgba(255, 255, 255, 0.02); 
+    --danger: #ff0055; 
+    --win: #00ffa3; 
+    --gold: #ffcc00;
+}
+
+@keyframes scan-line { 
+    0% { top: 0%; } 
+    100% { top: 100%; } 
+}
+
+@keyframes glitch { 
+    0% { transform: translate(0); } 
+    20% { transform: translate(-3px, 3px); } 
+    40% { transform: translate(-3px, -3px); filter: hue-rotate(90deg); } 
+    100% { transform: translate(0); } 
+}
+
+body, html { 
+    margin: 0; 
+    padding: 0; 
+    height: 100vh; 
+    background: var(--bg); 
+    font-family: 'Montserrat', sans-serif; 
+    color: white; 
+    overflow: hidden; 
+}
+
+body::after { 
+    content: ""; 
+    position: fixed; 
+    inset: 0; 
+    background: url('https://grainy-gradients.vercel.app/noise.svg'); 
+    opacity: 0.03; 
+    pointer-events: none; 
+    z-index: 999; 
+}
+
+.main-layout { 
+    height: 100vh; 
+    display: flex; 
+    flex-direction: column; 
+    transition: 0.3s; 
+}
+
+.glitch-active { 
+    animation: glitch 0.2s linear infinite; 
+}
+
+.bridge-view { 
+    height: 28vh; 
+    width: 100%; 
+    position: relative; 
+    border-bottom: 2px solid #111; 
+    background: #000; 
+}
+
+iframe { 
+    width: 100%; 
+    height: 100%; 
+    border: none; 
+    filter: contrast(1.1) brightness(0.7) saturate(0.6); 
+}
+
+.scanner { 
+    position: absolute; 
+    width: 100%; 
+    height: 2px; 
+    background: rgba(0, 212, 255, 0.3); 
+    top: 0; 
+    animation: scan-line 4s linear infinite; 
+    pointer-events: none; 
+    z-index: 5; 
+}
+
+.omega-hud { 
+    display: grid; 
+    grid-template-columns: repeat(4, 1fr); 
+    background: #000; 
+    border-bottom: 1px solid #222; 
+    padding: 10px; 
+    font-family: 'Orbitron'; 
+    font-size: 0.55em; 
+    text-align: center; 
+}
+
+.hud-stat span { 
+    display: block; 
+    color: var(--aura-blue); 
+    font-size: 1.6em; 
+    font-weight: 900; 
+    transition: 0.1s; 
+}
+
+.visual-engine { 
+    height: 80px; 
+    background: #030305; 
+    border-bottom: 1px solid #111; 
+    position: relative; 
+    overflow: hidden; 
+}
+
+#vectorGraph { 
+    width: 100%; 
+    height: 100%; 
+    stroke-width: 3; 
+    fill: none; 
+    transition: 0.5s; 
+    filter: drop-shadow(0 0 5px var(--aura-blue)); 
+}
+
+.dashboard { 
+    flex: 1; 
+    padding: 15px; 
+    background: radial-gradient(circle at center, #0a0a15 0%, #000 100%); 
+    overflow-y: auto; 
+    position: relative; 
+}
+
+.node { 
+    width: 14px; 
+    height: 14px; 
+    border-radius: 50%; 
+    border: 1px solid #222; 
+    transition: 0.3s; 
+    display: inline-block; 
+    margin: 0 3px; 
+}
+
+.node-ALPHA { 
+    background: var(--aura-blue); 
+    box-shadow: 0 0 10px var(--aura-blue); 
+}
+
+.node-BETA { 
+    background: var(--ultra-purple); 
+    box-shadow: 0 0 10px var(--ultra-purple); 
+}
+
+.signal-nexus { 
+    background: var(--glass); 
+    backdrop-filter: blur(10px); 
+    border: 1px solid rgba(0, 212, 255, 0.1); 
+    padding: 20px; 
+    border-radius: 12px; 
+    text-align: center; 
+    margin-bottom: 15px; 
+}
+
+#mainSignal { 
+    font-size: 3.5em; 
+    font-family: 'Orbitron'; 
+    font-weight: 900; 
+    letter-spacing: 10px; 
+    margin: 8px 0; 
+}
+
+.ctrl-grid { 
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    gap: 10px; 
+    margin-bottom: 12px; 
+}
+
+input { 
+    background: #000; 
+    border: 1px solid #333; 
+    color: #fff; 
+    padding: 12px; 
+    border-radius: 6px; 
+    font-family: 'Orbitron'; 
+    text-align: center; 
+    outline: none; 
+}
+
+.btn { 
+    padding: 14px; 
+    border: 1px solid #444; 
+    background: transparent; 
+    color: #fff; 
+    font-weight: 900; 
+    border-radius: 6px; 
+    font-size: 0.7em; 
+    cursor: pointer; 
+    text-transform: uppercase; 
+    touch-action: manipulation; 
+    transition: 0.2s;
+}
+
+.btn:active { 
+    transform: scale(0.95); 
+    opacity: 0.7; 
+}
+
+.btn-win { 
+    border-color: var(--win); 
+    color: var(--win); 
+}
+
+.btn-loss { 
+    border-color: var(--danger); 
+    color: var(--danger); 
+}
+
+#lockout { 
+    display: none; 
+    position: fixed; 
+    inset: 0; 
+    background: rgba(0,0,0,0.95); 
+    z-index: 10000; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+    text-align: center; 
+}
