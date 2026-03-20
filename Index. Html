@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>NEURAL SINGULARITY V100</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#00d4ff">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Montserrat:wght@100;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div id="lockout">
+    <h1 style="color:var(--danger); font-family:'Orbitron'; font-size: 3em;">SYSTEM OVERLOAD</h1>
+    <button onclick="location.reload()" class="btn" style="border-color: var(--gold); color: var(--gold); margin-top:30px;">REBOOT</button>
+</div>
+
+<div class="main-layout" id="appBody">
+    <div class="bridge-view">
+        <div class="scanner"></div>
+        <iframe id="gameFrame" src=""></iframe>
+        <div style="position: absolute; top: 10px; width: 94%; left: 3%; display: flex; gap: 8px; z-index: 10;">
+            <input type="text" id="urlIn" placeholder="INJECT URL..." style="flex: 1; opacity: 0.6; font-size: 0.6em;">
+            <button onclick="sync()" class="btn" style="padding: 2px 15px; font-size: 0.6em; border-color: var(--aura-blue);">CONNECT</button>
+        </div>
+    </div>
+
+    <div class="omega-hud">
+        <div class="hud-stat">SLOPE<span id="gravHUD">0.00</span></div>
+        <div class="hud-stat">POWER<span id="powerHUD">0</span></div>
+        <div class="hud-stat">WIN%<span id="winRateHUD">0%</span></div>
+        <div class="hud-stat">STRIKES<span id="strikeHUD" style="color:var(--danger)">0/3</span></div>
+    </div>
+
+    <div class="visual-engine">
+        <svg viewBox="0 0 500 100" preserveAspectRatio="none"><polyline id="vectorGraph" points="0,50 500,50" stroke="var(--aura-blue)"></polyline></svg>
+    </div>
+
+    <div class="dashboard">
+        <div id="nodes" style="text-align: center; margin-bottom: 10px;"></div>
+        <div class="signal-nexus">
+            <div id="mainSignal">BOOTING</div>
+            <div id="logic" style="font-size: 0.55em; color: var(--aura-blue); letter-spacing: 3px;">CORE ONLINE</div>
+        </div>
+
+        <div class="ctrl-grid">
+            <input type="number" id="pid" placeholder="PERIOD">
+            <input type="number" id="base" value="10">
+        </div>
+        <div class="ctrl-grid">
+            <button class="btn btn-win" onclick="process('WIN')">SUCCESS</button>
+            <button class="btn btn-loss" onclick="process('LOSS')">FAULT</button>
+        </div>
+    </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
