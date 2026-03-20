@@ -1,0 +1,19 @@
+{
+  "short_name": "Omega V100",
+  "name": "Neural Singularity V100",
+  "description": "A cyberpunk prediction trading application",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#00d4ff",
+  "background_color": "#010103",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/919/919851.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
